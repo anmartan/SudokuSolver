@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using SudokuSolver;
 
 namespace SudokuSolver
 {
@@ -9,11 +8,10 @@ namespace SudokuSolver
     /// That number can immediately be placed.
     /// </summary>
     public class NakedSingle : SolvingAlgorithm
-    {
-        private int _valueFound;
-        
-        public ValueFound FindNumber(Sudoku sudoku)
+    {        
+        public List<ValueFound> FindNumber(Sudoku sudoku)
         {
+            List<ValueFound> valuesFound = new List<ValueFound>();
             for (int i = 0; i < sudoku.GetSize(); i++)
             {
                 for (int j = 0; j < sudoku.GetSize(); j++)
@@ -23,12 +21,12 @@ namespace SudokuSolver
                     {
                         List<int> possibleValues = sudoku.GetPossibleValuesInCell(point);
                         if (possibleValues.Count == 1)
-                            return new ValueFound(possibleValues[0], i, j);
+                            valuesFound.Add(new ValueFound(possibleValues[0], i, j));
                     }
                 }
             }
 
-            return new ValueFound();
+            return valuesFound;
         }
     }
 }

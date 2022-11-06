@@ -9,5 +9,14 @@
             _row = row;
             _column = column;
         }
+
+        public static bool operator ==(Point a, Point b)
+        {
+            return a._row == b._row && a._column == b._column;
+        }
+        public static bool operator !=(Point a, Point b)
+        {
+            return !(a == b);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SudokuSolver
@@ -10,7 +11,8 @@ namespace SudokuSolver
     /// </summary>
     public class Solver : MonoBehaviour
     {
-        [SerializeField] private SolvingAlgorithm[] _solvingAlgorithms;
+        // TODO this should be read from somewhere
+        private SolvingAlgorithm[] _solvingAlgorithms;
 
         private Sudoku _sudoku;
         private bool _finished;
@@ -21,7 +23,9 @@ namespace SudokuSolver
             _sudoku = new Sudoku();
             
             //TODO remove
-            _solvingAlgorithms = new[] { new NakedSingle() };
+            _solvingAlgorithms = new SolvingAlgorithm[2];
+            _solvingAlgorithms[0] = new NakedSingle();
+            _solvingAlgorithms[1] = new HiddenSingle();
         }
 
         /// <summary>
@@ -32,14 +36,18 @@ namespace SudokuSolver
         {
             for (int i = 0; i < _solvingAlgorithms.Length; i++)
             {
-                ValueFound valueFound = _solvingAlgorithms[i].FindNumber(_sudoku);
-                if (valueFound._valid)
+                List<ValueFound> valuesFound = _solvingAlgorithms[i].FindNumber(_sudoku);
+                foreach (var valueFound in valuesFound)
                 {
                     //TODO update GUI
                     _sudoku.FillCell(valueFound._point, valueFound._number);
-                    Debug.Log("Value found: " + valueFound._number + " at row " + valueFound._point._row + ", column "+ valueFound._point._column);
-                    return true;
+                    _sudoku.RemovePencilMarks(valueFound._point, valueFound._number);
+                    Debug.LogWarning("Value found: " + valueFound._number + 
+                                     " at row " + valueFound._point._row +
+                                     ", column " + valueFound._point._column);
                 }
+
+                if (valuesFound.Count != 0) return true;
             }
 
             return false;
@@ -47,12 +55,8 @@ namespace SudokuSolver
 
         public void Solve()
         {
-            while (!_finished)
-            {
-                _sudoku.RemovePencilMarks();
-                _finished = !TakeStep();
-            }
-            
+            TakeStep();
+
             // TODO 
             // Check that it was correctly solved, or if no solution can be found (because there is ambiguity or the algorithms didnt work. 
         }

@@ -12,36 +12,30 @@ namespace SudokuSolver
     /// </summary>
     public class SudokuCell 
     {
-        private readonly int _region;                   // Region to which the cell belongs (boxes or irregular shapes)
-        private readonly List<int> _pencilMarks;        // Indexes at which the value is 'true' could be the value for the cell
-        private int _currentValue;                      // Value that is 'written' on the cell, if any
+        private readonly List<int> _pencilMarks;    // Indexes at which the value is 'true' could be the value for the cell
+        private int _currentValue;                  // Value that is 'written' on the cell, if any
 
         // Might change later
         private const int size = 9;
-        public SudokuCell(int region, int value = 0) 
+
+        public SudokuCell()
         {
-            _region = region;
-            _currentValue = value;
             _pencilMarks = new List<int>();
-            
-            if (_currentValue != 0)
-            {
-                _pencilMarks.Add(_currentValue);
-            }
-            
-            else 
-            {
-                for (int i = 1; i <= size; i++) 
-                    _pencilMarks.Add(i);
-            }
+            for (int i = 1; i <= size; i++) 
+                _pencilMarks.Add(i);
+        }
+        public void Init(int value = 0)
+        {
+            _currentValue = value;
         }
         
         public int GetCurrentValue() { return _currentValue; }
-        public int GetRegion() { return _region; }
         public List<int> GetPossibleValues() { return _pencilMarks; }
 
         public void SetValue(int number)
         {
+            _pencilMarks.Clear();
+            _pencilMarks.Add(number);
             _currentValue = number;
         }
         public bool RemovePencilMark(int number)

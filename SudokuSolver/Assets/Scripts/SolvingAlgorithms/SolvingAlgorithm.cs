@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace SudokuSolver
 {
     /// <summary>
@@ -8,18 +10,16 @@ namespace SudokuSolver
     /// </summary>
     public interface SolvingAlgorithm
     {
-        public ValueFound FindNumber(Sudoku sudoku);
+        public List<ValueFound> FindNumber(Sudoku sudoku);
     }
 
     public struct ValueFound
     {
-        public readonly bool _valid;
         public readonly int _number;
         public readonly Point _point;
-
+        
         public ValueFound(int number, int row, int column)
         {
-            _valid = true;
             _number = number;
             _point = new Point(row, column);
         }
