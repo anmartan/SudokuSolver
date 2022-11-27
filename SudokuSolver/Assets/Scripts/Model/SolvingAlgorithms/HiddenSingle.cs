@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SudokuSolver
+namespace SudokuSolver.Model
 {
     /// <summary>
     /// A hidden single, or pinned digit, can be found when a number can only appear in one position in a certain row, column or region.

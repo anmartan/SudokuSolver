@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SudokuSolver
+namespace SudokuSolver.Model
 {
     /// <summary>
     /// A locked candidate of type 1, also known as pointing pairs or triplets, can be found when a number in a region

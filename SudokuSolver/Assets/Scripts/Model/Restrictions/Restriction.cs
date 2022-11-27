@@ -1,4 +1,4 @@
-namespace SudokuSolver
+namespace SudokuSolver.Model
 {
     public interface Restriction
     {

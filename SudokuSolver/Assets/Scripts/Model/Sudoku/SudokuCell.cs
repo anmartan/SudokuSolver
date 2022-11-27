@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SudokuSolver 
+namespace SudokuSolver.Model
 {
     /// <summary>
     /// Logic class that represents each of the cells that form a sudoku; each of the spaces where a number must fit in.

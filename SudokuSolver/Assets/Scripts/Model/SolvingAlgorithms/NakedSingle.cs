@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SudokuSolver
+namespace SudokuSolver.Model
 {
     /// <summary>
     /// A naked single, forced digit or sole candidate, can be found when a cell has an unique possible value.

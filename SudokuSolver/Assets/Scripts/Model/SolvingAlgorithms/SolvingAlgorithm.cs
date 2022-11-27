@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SudokuSolver
+namespace SudokuSolver.Model
 {
     /// <summary>
     /// This interface offers a way to use different algorithms in a simple way. Inheritors may implement their own way of "finding numbers", that is, searching for a cell

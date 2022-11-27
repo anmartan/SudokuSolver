@@ -132,7 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 211133649}
-  - component: {fileID: 211133648}
+  - component: {fileID: 211133650}
+  - component: {fileID: 211133651}
   m_Layer: 0
   m_Name: Sudoku
   m_TagString: Untagged
@@ -140,18 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &211133648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211133647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49981ad188ed1554d971a7220ccc1d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &211133649
 Transform:
   m_ObjectHideFlags: 0
@@ -167,6 +156,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211133650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211133647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8604726818a44ac1ad5387f71b71c789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _view: {fileID: 211133651}
+--- !u!114 &211133651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211133647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67700dc3e201f0b4183585fe825420e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &457358672
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,9 +265,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 211133648}
-        m_TargetAssemblyTypeName: SudokuSolver.Solver, Assembly-CSharp
-        m_MethodName: Solve
+      - m_Target: {fileID: 211133650}
+        m_TargetAssemblyTypeName: Controller.Controller, Assembly-CSharp
+        m_MethodName: TakeStep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

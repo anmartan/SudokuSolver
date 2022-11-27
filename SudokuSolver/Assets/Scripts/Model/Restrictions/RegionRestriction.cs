@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SudokuSolver
+namespace SudokuSolver.Model
 {
     public class RegionRestriction: Restriction
     {
