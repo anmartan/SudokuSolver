@@ -23,9 +23,10 @@ namespace SudokuSolver
             _sudoku = new Sudoku();
             
             //TODO remove
-            _solvingAlgorithms = new SolvingAlgorithm[2];
+            _solvingAlgorithms = new SolvingAlgorithm[3];
             _solvingAlgorithms[0] = new NakedSingle();
             _solvingAlgorithms[1] = new HiddenSingle();
+            _solvingAlgorithms[2] = new LockedCandidatesPointing();
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace SudokuSolver
                 {
                     //TODO update GUI
                     _sudoku.FillCell(valueFound._point, valueFound._number);
-                    _sudoku.RemovePencilMarks(valueFound._point, valueFound._number);
+                    _sudoku.RemoveAllImpossiblePencilMarks(valueFound._point, valueFound._number);
                     Debug.LogWarning("Value found: " + valueFound._number + 
                                      " at row " + valueFound._point._row +
                                      ", column " + valueFound._point._column);

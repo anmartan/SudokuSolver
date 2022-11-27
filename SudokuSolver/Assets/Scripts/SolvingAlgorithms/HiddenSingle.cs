@@ -24,14 +24,14 @@ namespace SudokuSolver
                     columnSet.Add(new Point(j, i));
                 }
                 
-                valuesFound.AddRange(FindOccurrencesInSet(sudoku, rowSet));
-                valuesFound.AddRange(FindOccurrencesInSet(sudoku, columnSet));
-                valuesFound.AddRange(FindOccurrencesInSet(sudoku, sudoku.GetCellsInRegion(i)));
+                valuesFound.AddRange(FindOccurrencesInHouse(sudoku, rowSet));
+                valuesFound.AddRange(FindOccurrencesInHouse(sudoku, columnSet));
+                valuesFound.AddRange(FindOccurrencesInHouse(sudoku, sudoku.GetCellsInRegion(i)));
             }
             return valuesFound;
         }
 
-        private List<ValueFound> FindOccurrencesInSet(Sudoku sudoku, List<Point> cells)
+        private List<ValueFound> FindOccurrencesInHouse(Sudoku sudoku, List<Point> cells)
         {
             // Arrays to take note of the numbers that are repeated, and whether they are "fixed" into the grid or not
             bool[] isWritten = new bool[cells.Count];

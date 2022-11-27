@@ -18,5 +18,14 @@
         {
             return !(a == b);
         }
+
+        public static Point operator *(Point a, int k)
+        {
+            return new Point(a._row * k, a._column * k);
+        }
+        public static Point operator +(Point a, Point b)
+        {
+            return new Point(a._row + b._row, a._column + b._column);
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace SudokuSolver
         private readonly List<int> _pencilMarks;    // Indexes at which the value is 'true' could be the value for the cell
         private int _currentValue;                  // Value that is 'written' on the cell, if any
 
-        // Might change later
+        // TODO Might change later
         private const int size = 9;
 
         public SudokuCell()
@@ -26,7 +26,8 @@ namespace SudokuSolver
         }
         public void Init(int value = 0)
         {
-            _currentValue = value;
+            if(value != 0) SetValue(value);
+            else _currentValue = value;
         }
         
         public int GetCurrentValue() { return _currentValue; }
